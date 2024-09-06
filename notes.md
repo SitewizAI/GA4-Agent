@@ -1,14 +1,58 @@
-Run gcloud auth application-default login
-Then gcloud auth application-default print-access-token
+# GA4 Agents Workshop Setup Instructions
 
-into
-https://huggingface.co/spaces/Sitewiz/Langflow
-https://chicago.measurecamp.org/
-https://www.linkedin.com/groups/13001103/
-https://docs.google.com/document/d/13J8YPuMP8UUJYYa3S19j7S4WBRQUlny5-TaMUICJqQs/edit
+Welcome to the GA4 Agents workshop! Follow the steps below to get your environment set up and ready to run.
 
-https://astra.datastax.com/langflow/2305abbf-2e85-43bc-a1b5-8752a048f082/flow/31c412ed-7515-47f6-8a2a-b80741a17c4a
+## 1. Authenticate Google Cloud
 
-curl -X POST \ -H "Authorization: Bearer ya29.a0AcM612yafWcZzgvIbLJKy44RR0vb-JdZuw4p7rK0jM7EoPefumfZ6XSw_pnl7g-dPoVRETBv4MgmK1CXu_0SzskskiICfj-Xo1CQF26sGo6r9wGIXgihzV_tw2EhnlW1NtTaZYIQ7-CG9sC7bJtlDZA1uMprCB1u1t5X8AWiaCgYKAbISARMSFQHGX2MiRT4RtA22oeMl2EUYp90cPw0175" \ -H "Content-Type: application/json" \ -d '{ "query": "SELECT _ FROM `bigquery-public-data.ga4*obfuscated_sample_ecommerce.events*_` LIMIT 0", "maxResults": 1, "timeoutMs": 10000, "useLegacySql": false }' \ "https://bigquery.googleapis.com/bigquery/v2/projects/spherical-proxy-424916-c9/queries"
+First, authenticate with Google Cloud to get your required access token.
 
-curl -X POST \ -H "Authorization: Bearer ya29.a0AcM612yafWcZzgvIbLJKy44RR0vb-JdZuw4p7rK0jM7EoPefumfZ6XSw_pnl7g-dPoVRETBv4MgmK1CXu_0SzskskiICfj-Xo1CQF26sGo6r9wGIXgihzV_tw2EhnlW1NtTaZYIQ7-CG9sC7bJtlDZA1uMprCB1u1t5X8AWiaCgYKAbISARMSFQHGX2MiRT4RtA22oeMl2EUYp90cPw0175" \ -H "Content-Type: application/json" \ -d '{ "query": "SELECT \* FROM `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events*\*` LIMIT 0", "maxResults": 1, "timeoutMs": 10000, "useLegacySql": false }' \ "https://bigquery.googleapis.com/bigquery/v2/projects/spherical-proxy-424916-c9/queries"
+```bash
+gcloud auth application-default login
+gcloud auth application-default print-access-token
+```
+
+## 2. Upload GA4 Agent to Langflow
+
+To proceed, you'll need to upload the `GA4 Agent.json` file to Langflow. Without this, the agents won’t work properly.
+You can either:
+
+- Duplicate the Langflow space: [Langflow GA4 Agent](https://huggingface.co/spaces/Sitewiz/Langflow)
+
+- Upload the JSON to your own instance of Langflow
+
+## 3. Set Up API Keys
+
+Ensure you set up both the `openai_api_key` and `bigquery_Api_key`. These can be obtained by running:
+
+```bash
+gcloud auth application-default login
+gcloud auth application-default print-access-token
+```
+
+## 4. Explore the Agent Flows
+
+Each Analyst Agent represents a large language model (LLM) that processes instructions, creates, and runs SQL queries on BigQuery. The model will understand and process the output and even suggest queries to run next.
+
+Feel free to experiment with the prompts, edit the agents, and add more by:
+
+- Ungrouping an agent
+
+- Making your changes
+
+- Regrouping the agent
+
+## 5. Run on Your Own BigQuery Dataset
+
+You can also run the agents on your own BigQuery dataset instead of the public eCommerce one, enabling you to automate insights from your Google Analytics.
+
+## Useful Links
+
+- [Langflow Workspace](https://huggingface.co/spaces/Sitewiz/Langflow)
+
+- [MeasureCamp Chicago](https://chicago.measurecamp.org/)
+
+- [LinkedIn Group](https://www.linkedin.com/groups/13001103/)
+
+- [Workshop Documentation](https://docs.google.com/document/d/13J8YPuMP8UUJYYa3S19j7S4WBRQUlny5-TaMUICJqQs/edit)
+
+- [Langflow Flow Reference](https://astra.datastax.com/langflow/2305abbf-2e85-43bc-a1b5-8752a048f082/flow/31c412ed-7515-47f6-8a2a-b80741a17c4a)
