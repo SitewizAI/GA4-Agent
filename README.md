@@ -2,6 +2,14 @@
 
 Welcome to the GA4 Agents workshop! Follow the steps below to get your environment set up and ready to run.
 
+## Useful Links (at the top)
+
+- [Langflow GA4 Agent](https://huggingface.co/spaces/Sitewiz/Langflow)
+
+- [GA4 Query Prompt](https://github.com/SitewizAI/GA4-Agent/blob/main/ga4_query.txt)
+
+- [GA4 Interpret Prompt](https://github.com/SitewizAI/GA4-Agent/blob/main/ga4_interpret.txt)
+
 ## 1. Authenticate Google Cloud
 
 First, authenticate with Google Cloud to get your required access token.
@@ -45,14 +53,6 @@ Feel free to experiment with the prompts, edit the agents, and add more by:
 
 You can also run the agents on your own BigQuery dataset instead of the public eCommerce one, enabling you to automate insights from your Google Analytics.
 
-## Useful Links
-
-- [Langflow Workspace](https://huggingface.co/spaces/Sitewiz/Langflow)
-
-- [MeasureCamp Chicago](https://chicago.measurecamp.org/)
-
-- [LinkedIn Group](https://www.linkedin.com/groups/13001103/)
-
-- [Workshop Documentation](https://docs.google.com/document/d/13J8YPuMP8UUJYYa3S19j7S4WBRQUlny5-TaMUICJqQs/edit)
+## Additional Useful Links
 
 - [Langflow Flow Reference](https://astra.datastax.com/langflow/2305abbf-2e85-43bc-a1b5-8752a048f082/flow/31c412ed-7515-47f6-8a2a-b80741a17c4a)

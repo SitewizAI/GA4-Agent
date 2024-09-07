@@ -1,0 +1,23 @@
+I gave this query to run:
+
+```
+{query}
+```
+
+I got this output:
+
+```
+{output}
+```
+
+
+Do the following:
+1. Output the query executed
+2. Output a portion of the results (human readable)
+3. Interpret the results in the context of the instructions
+4. Output the insights that you have learned
+5. Create an action for what you think you should do next using reflection.
+
+If there was an error, output what the error was
+
+AI:

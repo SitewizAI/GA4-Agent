@@ -1,0 +1,70 @@
+**User Query** :
+{user_prompt}
+
+---
+
+**Task** : Create a GA4 SQL query to the `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_20201209` table. Use the schema information provided below to ensure the query is valid. 
+1. **Field Validation** :
+  - Only reference fields that exist in the schema provided below.
+ 
+  - Use the correct dot notation when accessing fields within complex data structures like `RECORD` (also known as `STRUCT`). For example, access `ecommerce.purchase_revenue_in_usd` directly if it’s a non-repeated field.
+ 
+  - Use `UNNEST` only for repeated fields (arrays). Do not use `UNNEST` for fields that are simple `STRUCT` (single-record) types. For example, `event_params` and `user_properties` require `UNNEST`, while `ecommerce` does not.
+ 
+2. **Query Structure** : 
+  - Validate that the query structure is correct and does not produce errors related to data types, field names, or incorrect usage of `UNNEST`.
+ 
+  - Access fields within `STRUCT` (or `RECORD`) directly using dot notation without `UNNEST` if they are not repeated. For instance, fields within `ecommerce` can be accessed directly.
+
+  - Ensure that all referenced fields are appropriately handled, especially when dealing with nested or repeated fields.
+ 
+3. **Error Handling** :
+  - If a query cannot be formed due to a missing or invalid field in the schema, return an error message instead of a query.
+
+
+---
+
+Schema Information for `events_20201209` Table** :
+
+```json
+column_name,data_type,is_nullable
+event_date,STRING,YES
+event_timestamp,INT64,YES
+event_name,STRING,YES
+event_params,"ARRAY<STRUCT<key STRING, value STRUCT<string_value STRING, int_value INT64, float_value FLOAT64, double_value FLOAT64>>>",NO
+event_previous_timestamp,INT64,YES
+event_value_in_usd,FLOAT64,YES
+event_bundle_sequence_id,INT64,YES
+event_server_timestamp_offset,INT64,YES
+user_id,STRING,YES
+user_pseudo_id,STRING,YES
+privacy_info,"STRUCT<analytics_storage INT64, ads_storage INT64, uses_transient_token STRING>",YES
+user_properties,"ARRAY<STRUCT<key INT64, value STRUCT<string_value INT64, int_value INT64, float_value INT64, double_value INT64, set_timestamp_micros INT64>>>",NO
+user_first_touch_timestamp,INT64,YES
+user_ltv,"STRUCT<revenue FLOAT64, currency STRING>",YES
+device,"STRUCT<category STRING, mobile_brand_name STRING, mobile_model_name STRING, mobile_marketing_name STRING, mobile_os_hardware_model INT64, operating_system STRING, operating_system_version STRING, vendor_id INT64, advertising_id INT64, language STRING, is_limited_ad_tracking STRING, time_zone_offset_seconds INT64, web_info STRUCT<browser STRING, browser_version STRING>>",YES
+geo,"STRUCT<continent STRING, sub_continent STRING, country STRING, region STRING, city STRING, metro STRING>",YES
+app_info,"STRUCT<id STRING, version STRING, install_store STRING, firebase_app_id STRING, install_source STRING>",YES
+traffic_source,"STRUCT<medium STRING, name STRING, source STRING>",YES
+stream_id,INT64,YES
+platform,STRING,YES
+event_dimensions,STRUCT<hostname STRING>,YES
+ecommerce,"STRUCT<total_item_quantity INT64, purchase_revenue_in_usd FLOAT64, purchase_revenue FLOAT64, refund_value_in_usd FLOAT64, refund_value FLOAT64, shipping_value_in_usd FLOAT64, shipping_value FLOAT64, tax_value_in_usd FLOAT64, tax_value FLOAT64, unique_items INT64, transaction_id STRING>",YES
+items,"ARRAY<STRUCT<item_id STRING, item_name STRING, item_brand STRING, item_variant STRING, item_category STRING, item_category2 STRING, item_category3 STRING, item_category4 STRING, item_category5 STRING, price_in_usd FLOAT64, price FLOAT64, quantity INT64, item_revenue_in_usd FLOAT64, item_revenue FLOAT64, item_refund_in_usd FLOAT64, item_refund FLOAT64, coupon STRING, affiliation STRING, location_id STRING, item_list_id STRING, item_list_name STRING, item_list_index STRING, promotion_id STRING, promotion_name STRING, creative_name STRING, creative_slot STRING>>",NO
+```
+
+
+---
+
+**Output Requirement** : Your output must be **only**  the SQL query like the example provided:
+
+```sql
+SELECT * FROM `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_20201209` LIMIT 0
+```
+
+If you cannot generate a valid query due to missing or invalid fields, return an error message instead. Ensure that you are running a unique query that was not ran before in the context.
+
+
+---
+
+**AI** :
