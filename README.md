@@ -24,13 +24,12 @@ gcloud auth application-default print-access-token
 To proceed, you'll need to upload the `Simple GA4 Agent.json` file to Langflow. Without this, the agents won’t work properly.
 You can either:
 
+- Upload the JSON to your own instance of Langflow (Preferred)
 - Duplicate the Langflow space: [Langflow GA4 Agent](https://huggingface.co/spaces/Sitewiz/Langflow)
-
-- Upload the JSON to your own instance of Langflow
 
 ## 3. Set Up API Keys
 
-Ensure you set up both the `openai_api_key` and `bigquery_Api_key` in the appropriate fields. The `bigquery_Api_key` can be obtained by running:
+Ensure you set up both the `openai_api_key` and `bigquery_api_key` in the appropriate fields. The `bigquery_api_key` can be obtained by running:
 
 ```bash
 gcloud auth application-default login
